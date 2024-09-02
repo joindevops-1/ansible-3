@@ -1,0 +1,15 @@
+---
+- name: Check if the number is greater than 10
+  hosts: localhost
+  vars:
+    my_number: 15  # Replace this with your number
+  tasks:
+    - name: Check if the number is greater than 10
+      debug:
+        msg: "The number {{ my_number }} is greater than 10."
+      when: my_number > 10
+
+    - name: Check if the number is less than or equal to 10
+      debug:
+        msg: "The number {{ my_number }} is less than or equal to 10."
+      when: my_number <= 10
