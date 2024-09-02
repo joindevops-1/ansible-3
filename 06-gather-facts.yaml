@@ -5,3 +5,24 @@
   - name: print all facts
     ansible.builtin.debug:
       msg: "{{ ansible_facts }}"
+
+  - name: print OS family
+    ansible.builtin.debug:
+      msg: "{{ ansible_os_family  }}"
+
+  - name: install nginx if redhat
+    ansible.builtin.dnf:
+      name: nginx
+      state: present
+    when: ansible_os_family == "Redhat"
+
+  - name: install nginx if redhat
+    ansible.builtin.apt:
+      name: nginx
+      state: present
+    when: ansible_os_family == "Debian"
+
+  - name: run nginx
+    ansible.builtin.service:
+      name: nginx
+      state: started
