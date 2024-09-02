@@ -1,0 +1,7 @@
+- name: heterogenous features
+  hosts: web
+  become: yes
+  tasks:
+  - name: print all facts
+    ansible.builtin.debug:
+      msg: "{{ ansible_facts }}"
