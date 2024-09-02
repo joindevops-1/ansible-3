@@ -1,6 +1,7 @@
 ---
 - name: Check if the number is greater than 10
   hosts: localhost
+  connection: local
   vars:
     my_number: 15  # Replace this with your number
   tasks:
