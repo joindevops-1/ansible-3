@@ -1,6 +1,6 @@
 - name: data types and testing local connection
   hosts: local
-  connection: local
+  #connection: local
   vars:
     course: "DevOps with AWS"
     live: true
