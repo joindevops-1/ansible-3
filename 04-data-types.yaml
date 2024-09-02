@@ -1,0 +1,37 @@
+- name: data types and testing local connection
+  hosts: localhost
+  connection: local
+  vars:
+    course: "DevOps with AWS"
+    live: true
+    topics:
+    - Linux
+    - 3Tier
+    - Shell
+    - Ansible
+    - Terraform
+    - AWS
+    - Docker
+    - Kubernetes
+    duration: 120
+    tools:
+      ci: Jenkins
+      cm: Ansible
+      scripting: shell
+      cloud: AWS
+  tasks:
+  - name: string data type
+    ansible.builtin.debug:
+      msg: "I am learning {{ course }}"
+  - name: is live or not
+    ansible.builtin.debug:
+      msg: "is Live: {{ live }}"
+  - name: topics covered
+    ansible.builtin.debug:
+      msg: "Topics are: {{ topics }}"
+  - name: duration in hours
+    ansible.builtin.debug:
+      msg: "Duration in HRS: {{ duration }}"
+  - name: 
+    ansible.builtin.debug:
+      msg: "tools are: {{ tools }}"
