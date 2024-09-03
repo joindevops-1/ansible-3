@@ -13,3 +13,8 @@
     - {name: 'mysql'}
     - {name: 'backend'}
     - {name: 'frontend'}
+    register: ec2_instances
+
+  - name: print the information
+    ansible.builtin.debug:
+      msg: ec2_instances
