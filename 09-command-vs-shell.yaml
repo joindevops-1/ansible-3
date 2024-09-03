@@ -14,7 +14,7 @@
     ansible.builtin.shell: ls -l > /tmp/output.txt
 
   - name: redirect the output
-    ansible.builtin.command: ps -ef | grep ssh
+    ansible.builtin.shell: ps -ef | grep ssh
 
   - name: print env variables
     ansible.builtin.shell: env
