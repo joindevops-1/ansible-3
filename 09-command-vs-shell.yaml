@@ -10,5 +10,5 @@
     ansible.builtin.debug:
       msg: "{{OUTPUT}}"
   
-  # - name: redirect the output
-  #   ansible.bultin.command: ls -l > /tmp/output.txt
+  - name: redirect the output
+    ansible.bultin.command: ls -l > /tmp/output.txt
