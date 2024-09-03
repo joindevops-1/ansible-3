@@ -30,5 +30,4 @@
       ttl: 1
       value: "{{ item.instances[0].private_ip_address }}"
       overwrite: true
-      region: us-east-1
     loop: "{{ ec2_instances.results }}"
