@@ -25,11 +25,10 @@
     amazon.aws.route53:
       state: present
       zone: daws81s.online
-      record:
-        name: "{{ item.item.name }}.daws81s.online"
-        type: A
-        ttl: 1
-        value: "{{ item.instances[0].private_ip_address }}"
-        overwrite: true
+      record: "{{ item.item.name }}.daws81s.online"
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].private_ip_address }}"
+      overwrite: true
       region: us-east-1
     loop: "{{ ec2_instances.results }}"
