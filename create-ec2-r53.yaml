@@ -31,3 +31,15 @@
       value: "{{ item.instances[0].private_ip_address }}"
       overwrite: true
     loop: "{{ ec2_instances.results }}"
+
+  - name: update R53 record for frontend
+    amazon.aws.route53:
+      state: present
+      zone: daws81s.online
+      record: "daws81s.online"
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].public_ip_address }}"
+      overwrite: true
+    loop: "{{ ec2_instances.results }}"
+    when: item.item.name == "frontend"
