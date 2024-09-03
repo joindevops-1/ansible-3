@@ -11,8 +11,7 @@
       msg: "{{OUTPUT}}"
   
   - name: redirect the output
-    ansible.bultin.shell: 
-      cmd: ls -l > /tmp/output.txt
+    ansible.builtin.shell: ls -l > /tmp/output.txt
 
   # - name: print files and folders
   #   ansible.builtin.command: env
