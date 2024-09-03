@@ -26,7 +26,7 @@
       state: present
       zone: daws81s.online
       record:
-        name: "{{ item.item.name }}"
+        name: "{{ item.item.name }}.daws81s.online"
         type: A
         ttl: 1
         value: "{{ item.instances[0].private_ip_address }}"
