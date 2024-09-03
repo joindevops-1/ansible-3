@@ -19,7 +19,7 @@
 
   - name: print the information
     ansible.builtin.debug:
-      msg: "{{ec2_instances.results[0].instances[0].private_ip_address}}"
+      msg: "{{ec2_instances.results[0].item.name}}"
 
   - name: update R53 records
     amazon.aws.route53:
