@@ -14,7 +14,7 @@
     ansible.builtin.shell: ls -l > /tmp/output.txt
 
   - name: print env variables
-    ansible.builtin.command: env
+    ansible.builtin.shell: env
     register: environment
 
   - name: print output
