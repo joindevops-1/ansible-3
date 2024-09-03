@@ -13,5 +13,10 @@
   - name: redirect the output
     ansible.builtin.shell: ls -l > /tmp/output.txt
 
-  - name: print files and folders
+  - name: print env variables
     ansible.builtin.command: env
+    register: environment
+
+  - name: print output
+    ansible.builtin.debug:
+      msg: "{{environment}}"
