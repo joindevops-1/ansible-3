@@ -4,6 +4,11 @@
   tasks:
   - name: print files and folders
     ansible.builtin.command: ls -l
+    register: OUTPUT
+
+  - name: print output
+    ansible.builtin.debug:
+      msg: "{{OUTPUT}}"
   
   # - name: redirect the output
   #   ansible.bultin.command: ls -l > /tmp/output.txt
