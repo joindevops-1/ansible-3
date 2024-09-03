@@ -1,6 +1,11 @@
 - name: create ec2 and r53
   hosts: local
   connection: local
+  vars:
+    instances:
+    - {name: 'mysql'}
+    - {name: 'backend'}
+    - {name: 'frontend'}
   tasks:
   - name: create ec2 instances
     amazon.aws.ec2_instance:
@@ -10,11 +15,22 @@
       security_group: sg-09a300a3729062c5a
       image_id: "ami-09c813fb71547fc4f"
     loop:
-    - {name: 'mysql'}
-    - {name: 'backend'}
-    - {name: 'frontend'}
+    - "{{instances}}"
     register: ec2_instances
 
   - name: print the information
     ansible.builtin.debug:
       msg: "{{ec2_instances.results[0].instances[0].private_ip_address}}"
+
+  - name: update R53 records
+    amazon.aws.route53:
+      state: present
+      zone: daws81s.online
+      record:
+        name: "{{ item.item.name }}"
+        type: A
+        ttl: 1
+        value: "{{ item.instances[0].private_ip_address }}"
+        overwrite: true
+      region: us-east-1
+    loop: "{{ ec2_instances.results }}"
