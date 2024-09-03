@@ -1,0 +1,9 @@
+- name: command vs shell
+  hosts: local
+  connection: local
+  tasks:
+  - name: print files and folders
+    ansible.builtin.command: ls -l
+  
+  - name: redirect the output
+    ansible.bultin.command: ls -l > /tmp/output.txt
